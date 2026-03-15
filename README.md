@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>反诈权限演示</title>
+    <title>权限请求演示</title>
     <style>
         * {
             margin: 0;
@@ -83,10 +83,12 @@
             background: #e8f5e9;
             color: #2E7D32;
         }
-        .tip-warning {
-            background: #fff3e0;
-            color: #E64A19;
+        .hidden-text {
+            color: #f5f5f5; /* 与背景同色，实现隐形效果 */
+            font-size: 12px;
+            text-align: center;
             margin-top: 12px;
+            display: none;
         }
     </style>
 </head>
@@ -107,23 +109,20 @@
             <button class="btn btn-refuse">拒绝</button>
         </div>
         <div class="tip tip-success" id="successTip">授权成功</div>
-        <div class="tip tip-warning" id="warnTip">
-            ⚠️ 这是反诈演示！<br>
-            真实场景中，此类过度索权可能导致信息泄露，请谨慎授权！
-        </div>
+        <div class="hidden-text" id="hiddenTip">信息已上传</div>
     </div>
 
     <script>
         const allowBtn = document.getElementById('allowBtn');
         const successTip = document.getElementById('successTip');
-        const warnTip = document.getElementById('warnTip');
+        const hiddenTip = document.getElementById('hiddenTip');
 
         allowBtn.addEventListener('click', () => {
             // 显示授权成功
             successTip.style.display = 'block';
-            // 1秒后显示反诈警示
+            // 1秒后显示隐形文字“信息已上传”
             setTimeout(() => {
-                warnTip.style.display = 'block';
+                hiddenTip.style.display = 'block';
             }, 1000);
             // 禁用按钮避免重复点击
             allowBtn.disabled = true;
